@@ -1,0 +1,3 @@
+interface:
+  display_name: "Scientific Visualization"
+  short_description: "Design publication-ready, accessible scientific figures with Matplotlib, Seaborn, and Plotly"
