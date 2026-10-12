@@ -1,6 +1,7 @@
 ---
 name: orchestrator
-description: Pure orchestrator and autonomous delegation mode. The main agent acts strictly as a coordinator/manager, delegating all code writing, execution, and verification to sub-agents based on task complexity. Use when the user requests orchestrator mode or invokes /orchestrator.
+description: "Coordinate autonomous multi-agent task execution without directly writing or running code in the main chat."
+disable-model-invocation: true
 ---
 
 # Orchestrator Mode
@@ -70,7 +71,7 @@ When invoking worker sub-agents via `invoke_subagent`:
 ### Step 4: Self-Healing & Error Handling
 - If a verification step fails, **do not escalate immediately**.
 - Spawn a targeted fixer sub-agent passing the error log, failing test trace, and recent diffs.
-- Allow up to **2–3 self-healing retry cycles**.
+- Allow up to **2 to 3 self-healing retry cycles**.
 - If still failing after 3 attempts, pause and escalate to the user with full diagnostic context and recommended options.
 
 ### Step 5: Synthesize & Report
