@@ -1,0 +1,3 @@
+interface:
+  display_name: "Paper Lookup"
+  short_description: "Query 18 scholarly APIs for papers, citations, and open-access text"
