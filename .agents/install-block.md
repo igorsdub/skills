@@ -73,16 +73,15 @@ In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.c
 
 ## Gemini CLI
 
-Gemini doesn't read `.claude-plugin`, and `--path` takes one bucket. One install per promoted bucket gives exactly the promoted set (27 skills, verified 2026-10-07).
+Gemini doesn't read `.claude-plugin`, and `--path` points to the `skills` directory.
 
 <canonical-block name="gemini">
 
 ```bash
-gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
-gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
+gemini skills install https://github.com/mattpocock/skills.git --path skills
 ```
 
-Re-run both commands to update.
+Re-run to update.
 
 </canonical-block>
 

@@ -45,6 +45,23 @@ for DEST in "${DESTS[@]}"; do
 
   mkdir -p "$DEST"
 
+  for f in "$DEST"/*; do
+    [ -L "$f" ] || continue
+    if [ ! -e "$f" ]; then
+      target="$(readlink "$f")"
+      case "$target" in
+        /*) ;;
+        *) target="$(cd "$DEST" && pwd)/$target" ;;
+      esac
+      case "$target" in
+        "$REPO"/*|"$REPO")
+          rm "$f"
+          echo "cleaned stale symlink $(basename "$f")"
+          ;;
+      esac
+    fi
+  done
+
   for i in "${!names[@]}"; do
     name="${names[$i]}"
     src="${srcs[$i]}"
