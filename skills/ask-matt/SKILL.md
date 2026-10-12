@@ -78,6 +78,34 @@ A **phase** is a chunk of work inside a session: the grilling, the implementatio
 
 Read [PHASE-BOUNDARIES.md](PHASE-BOUNDARIES.md) for the ordered tree: the five questions, the reasoning behind each branch, and why the primary-source cost makes **Continue** the one to rule out first. Make the decision **at** a boundary; mid-phase, continue or split the rest into subagents.
 
+## Scientific and quantitative analysis
+
+When the work involves empirical research, statistical modeling, or scientific dissemination, follow the research pipeline:
+
+1. **Study planning and design**:
+   - **`/experimental-design`**: Choose experimental layouts, treatment allocations, blocking factors, and randomization schemes before collecting data.
+   - **`/statistical-power`**: Compute required sample sizes and statistical power or minimum detectable effects (MDE) to justify study size for grants and protocols.
+   - **`/what-if-oracle`**: Stress-test research assumptions, contingency plans, and project decisions under uncertainty through structured scenario analysis.
+
+2. **Literature and grants**:
+   - **`/paper-lookup`**: Query 18 scholarly APIs for papers, preprints, citations, open-access PDFs, and repository records with reproducible provenance.
+   - **`/research-lookup`**: Compile current background evidence, competing findings, and literature packets when synthesizing research contexts.
+   - **`/research-grants`**: Draft, refine, and audit grant proposals against funder-specific requirements (NSF, NIH, DOE, DARPA, NSTC).
+
+3. **Data preparation and modeling**:
+   - **`/polars`**: High-performance DataFrame operations, out-of-core queries, and streaming transforms for tabular datasets.
+   - **`/statistical-analysis`**: Guided hypothesis testing, assumption checks, effect size calculations, and APA-formatted summaries.
+   - **`/statsmodels`**: Direct econometric regressions, GLMs, discrete choice models, and time series specifications.
+   - **`/pymc`**: Bayesian statistical modeling, MCMC sampling, convergence diagnostics, and posterior predictive checks.
+   - **`/phylogenetics`**: Multiple sequence alignment and phylogenetic tree inference using MAFFT, IQ-TREE, and FastTree.
+
+4. **Communication and evaluation**:
+   - **`/scientific-visualization`**: Publication-ready, accessible figures and multi-panel layouts using Matplotlib, Seaborn, or Plotly.
+   - **`/scientific-writing`**: Draft and audit manuscripts or reports with explicit evidence provenance, reporting guideline compliance, and author accountability.
+   - **`/scientific-slides`**: Build structured presentation decks for conference talks, seminar presentations, or thesis defenses in PowerPoint or Beamer.
+   - **`/peer-review`**: Prepare constructive, evidence-bounded peer reviews, manuscript assessments, or revision responses.
+   - **`/scholar-evaluation`**: Qualitative-first developmental reviews of scholarly works and audits of low-stakes assessment rubrics.
+
 ## Standalone
 
 Off the main flow entirely.
