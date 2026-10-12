@@ -15,6 +15,8 @@ Format each question like so:
 Recommendation: <your recommended answer>
 ```
 
+Word each question so "yes" accepts your recommended answer.
+
 Each answer reshapes the tree: settled decisions unblock later questions. Reassess the tree after every answer, then ask the next question that can be settled without guessing at an answer you have not heard yet.
 
 Finding _facts_ is your job, never the user's. When a question needs a fact from the environment (filesystem, tools, etc.), find it before asking the question. The _decisions_ are the user's: put each to them and wait.
