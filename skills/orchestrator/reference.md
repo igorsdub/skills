@@ -2,7 +2,7 @@
 
 `orchestrator` turns the main chat into a coordinator. The main chat converses, plans, writes briefs and synthesises results. All code edits, test and build runs and multi-file searches go to four pinned roles: scout and runner (light tier), coder (medium), reviewer (heavy). Chunks of work are verified independently by runner, failures loop back to coder up to three times, and reviewer checks each milestone. Sub-agents commit on a feature branch; nobody pushes or merges.
 
-The skill names roles and tiers only. The concrete agent names and models live in your harness binding file (CLAUDE.md, GEMINI.md or AGENTS.md), and the Claude Code agent definitions live in the top-level `agents/` directory, installed locally.
+The skill names roles and tiers only. The concrete agent names and models live in your harness binding file (CLAUDE.md, GEMINI.md or AGENTS.md), and the agent definitions live in the separate `igorsdub/agents` repository (https://github.com/igorsdub/agents).
 
 ## When to reach for it
 

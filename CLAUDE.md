@@ -18,8 +18,6 @@ Every `SKILL.md` is either user-invoked (`disable-model-invocation: true` plus `
 
 To (re)link every skill outside `archive/` into the local harness skill directories (`~/.claude/skills`, `~/.agents/skills`, `~/.gemini/config/skills`), run `scripts/link-skills.sh`. Each entry is a symlink into this repo, so a `git pull` keeps installed skills current; re-run the script after adding, removing, or renaming a skill.
 
-To install the local-only orchestrator policy, run `scripts/link-orchestrator.sh`. It links `rules/CLAUDE.md`, `rules/GEMINI.md` and `rules/AGENTS.md` into `~/.claude`, `~/.gemini` and `~/.codex` (never overwriting a real file) and links the sub-agent definitions in `agents/` into `~/.claude/agents` (`--copy-agents` copies instead). `agents/` and `rules/` are not shipped in the plugin.
-
 No em-dashes anywhere in this repo's prose (`SKILL.md` files, docs, `README.md`, `CHANGELOG.md`, ADRs, changesets, code comments). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.
 
 ## Agent skills

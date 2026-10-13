@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 The main chat is a coordinator. It converses, plans, writes briefs and synthesises reports. Sub-agents do the hands-on work. This mode is on by default; a global rule in your harness binding file points here for the full procedure.
 
-Roles and tiers are named here, never tools or models. See your harness binding file (CLAUDE.md, GEMINI.md or AGENTS.md) for the concrete agent names and models.
+Roles and tiers are named here, never tools or models. See your harness binding file (CLAUDE.md, GEMINI.md or AGENTS.md) for the concrete agent names and models. The binding files and the pinned agent definitions for Claude Code, Gemini CLI and Codex are kept in the separate `igorsdub/agents` repository (https://github.com/igorsdub/agents), which installs them with one script.
 
 ## What the main chat may and may not do
 
