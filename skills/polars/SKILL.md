@@ -1,5 +1,6 @@
 ---
 name: polars
+disable-model-invocation: true
 description: High-performance DataFrame library for Python ETL, analytics, and pandas migration. Use when reading, manipulating, or transforming tabular data with Polars DataFrames and LazyFrames, migrating pandas workflows to Polars, executing out-of-core streaming analytics, or optimizing high-throughput data processing pipelines.
 license: https://github.com/pola-rs/polars/blob/main/LICENSE
 allowed-tools: Read

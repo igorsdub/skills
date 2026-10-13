@@ -1,5 +1,6 @@
 ---
 name: scholar-evaluation
+disable-model-invocation: true
 description: Provides qualitative-first, evidence-traceable developmental review of scholarly works and audit low-stakes research-assessment rubrics with optional local quality controls. Never use for ranking people or consequential decisions.
 license: MIT
 compatibility: Requires Python 3.11+ for optional bundled standard-library CLIs. All tooling is local JSON/CSV processing with no network, credentials, external models, or subprocesses.

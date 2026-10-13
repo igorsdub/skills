@@ -1,5 +1,6 @@
 ---
 name: pymc
+disable-model-invocation: true
 description: Builds and checks Bayesian models with PyMC, including hierarchical models, NUTS MCMC sampling, variational inference, mutable-data predictions, posterior predictive checks, MCMC diagnostics, and PSIS-LOO model comparison. Use when specifying Bayesian statistical models, sampling posterior distributions with PyMC, running MCMC convergence diagnostics, or conducting probabilistic regression.
 allowed-tools: Read Write Edit Bash
 compatibility: Requires Python 3.12+ with PyMC 6.3.2, PyTensor 3.3.2 and ArviZ 1.3-compatible dependencies; NumPy, pandas, Matplotlib, h5netcdf and h5py for bundled helpers/artifacts. Network access for installation only. Optional nutpie, NumPyro and BlackJAX samplers need separate dependencies.

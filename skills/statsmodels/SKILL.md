@@ -1,5 +1,6 @@
 ---
 name: statsmodels
+disable-model-invocation: true
 description: Fits and diagnoses Python statistical models including OLS, GLM, discrete and mixed models, ARIMA and SARIMAX. Use when specifying econometric regressions, fitting generalized linear models, calculating marginal effects, evaluating time series specifications, or assessing regression diagnostics and robust standard errors. For guided test selection with APA reporting, see statistical-analysis.
 allowed-tools: Read Write Edit Bash
 compatibility: Requires Python 3.10+ and statsmodels 0.15.0; the tested NumPy 2.5.3/SciPy 1.18.1 stack needs Python 3.12+. Plotting needs matplotlib; predictive metrics need scikit-learn. Network access is needed only for installation or documentation; no credentials.

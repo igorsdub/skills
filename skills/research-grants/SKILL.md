@@ -1,5 +1,6 @@
 ---
 name: research-grants
+disable-model-invocation: true
 description: Supports research proposal preparation and review for NSF, NIH, DOE, DARPA, and Taiwan NSTC, including opportunity-specific requirements, aims, review criteria, budgets, broader impacts, forms, and resubmissions. Use for investigator-authored grant development, compliance matrices, and proposal critiques.
 allowed-tools: Read Write Edit Bash
 license: MIT license

@@ -1,3 +1,5 @@
 interface:
   display_name: "Research Lookup"
   short_description: "Compile scholarly evidence packets for scientific manuscripts"
+policy:
+  allow_implicit_invocation: false

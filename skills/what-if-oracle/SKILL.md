@@ -1,5 +1,6 @@
 ---
 name: what-if-oracle
+disable-model-invocation: true
 description: Supports structured what-if scenario analysis for research planning, experimental contingencies, and scientific project decisions. Explores favorable, reference, adverse, wild-card, contrarian, and second-order scenarios with explicit assumptions, evidence, and decision triggers. Use to stress-test a research plan under uncertainty; scenario narratives do not estimate causal effects or calibrated forecast probabilities.
 license: CC BY-NC-SA 4.0
 metadata:
