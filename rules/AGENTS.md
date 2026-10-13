@@ -30,4 +30,4 @@ The top model running the main chat is never used as a sub-agent. Model names ro
 
 Multi-agent is on by default (`features.multi_agent`). Dispatch with `spawn_agent` (plus `send_input`, `wait_agent`, `close_agent`), naming the role and its model, or define per-agent TOML in `~/.codex/agents/*.toml` (`name`, `description`, `developer_instructions`, `model`). The `[agents]` table's `default_subagent_model` should be a light model.
 
-Sub-agents commit on a `claude/<slug>` branch and never push. Never nest sub-agents.
+The orchestrator creates or chooses the feature branch (default `codex/<task-slug>`) before dispatching. Sub-agents commit on the current branch, never push, and never switch branches or create worktrees. Never nest sub-agents.

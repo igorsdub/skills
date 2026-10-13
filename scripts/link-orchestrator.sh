@@ -18,7 +18,15 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 COPY=0
-[ "${1:-}" = "--copy-agents" ] && COPY=1
+for arg in "$@"; do
+  case "$arg" in
+    --copy-agents) COPY=1 ;;
+    *)
+      echo "Usage: link-orchestrator.sh [--copy-agents]" >&2
+      exit 2
+      ;;
+  esac
+done
 
 status=0
 
@@ -62,12 +70,20 @@ for src in "$REPO"/agents/*.md; do
   [ -e "$src" ] || continue
   target="$AGENTS_DEST/$(basename "$src")"
   if [ "$COPY" -eq 1 ]; then
-    [ -L "$target" ] && rm "$target"
+    if [ -L "$target" ]; then
+      rm "$target"
+    elif [ -e "$target" ] && ! cmp -s "$src" "$target"; then
+      echo "skipped $target: a real file exists. Merge it into $src or remove it, then re-run." >&2
+      status=1
+      continue
+    fi
     cp "$src" "$target"
     echo "copied $(basename "$src") -> $AGENTS_DEST"
   else
     if [ -e "$target" ] && [ ! -L "$target" ]; then
-      rm -f "$target"
+      echo "skipped $target: a real file exists. Merge it into $src or remove it, then re-run." >&2
+      status=1
+      continue
     fi
     ln -sfn "$src" "$target"
     echo "linked $(basename "$src") -> $src ($AGENTS_DEST)"

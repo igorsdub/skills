@@ -31,4 +31,4 @@ The top model running the main chat is never used as a sub-agent.
 - Gemini CLI: define scout, runner, coder and reviewer in `~/.gemini/agents/*.md` with the `model` frontmatter set to the alias above. Sub-agents cannot call sub-agents (built in). Dispatch by agent name.
 - Antigravity: reads this file and `~/.gemini/config/rules/*.md`. Use `invoke_subagent` with tiers flash_lite, flash, pro and `Workspace: 'inherit'`. Unverified, from earlier draft; not confirmed in official docs.
 
-Sub-agents commit on a `claude/<slug>` branch and never push. Never nest sub-agents.
+The orchestrator creates or chooses the feature branch (default `gemini/<task-slug>`) before dispatching. Sub-agents commit on the current branch, never push, and never switch branches or create worktrees. Never nest sub-agents.
