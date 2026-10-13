@@ -1,0 +1,3 @@
+interface:
+  display_name: "PyMC"
+  short_description: "Bayesian modeling, MCMC sampling, and probabilistic programming"

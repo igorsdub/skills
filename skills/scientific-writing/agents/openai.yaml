@@ -1,0 +1,5 @@
+interface:
+  display_name: "Scientific Writing"
+  short_description: "Draft and audit scientific manuscripts with provenance and reporting guidelines"
+policy:
+  allow_implicit_invocation: false

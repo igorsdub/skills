@@ -1,0 +1,3 @@
+interface:
+  display_name: "Statistical Power"
+  short_description: "Sample size calculation and power analysis for study planning"

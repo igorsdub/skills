@@ -1,0 +1,3 @@
+interface:
+  display_name: "Statsmodels"
+  short_description: "Statistical modeling, econometrics, and GLM estimation"

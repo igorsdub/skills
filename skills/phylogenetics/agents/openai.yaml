@@ -1,0 +1,5 @@
+interface:
+  display_name: "Phylogenetics"
+  short_description: "Reconstruct and analyze phylogenetic trees using MAFFT, IQ-TREE, FastTree, and ETE3"
+policy:
+  allow_implicit_invocation: false

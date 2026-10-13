@@ -1,0 +1,5 @@
+interface:
+  display_name: "STORM Research"
+  short_description: "Stanford multi-perspective research engine and report generator"
+policy:
+  allow_implicit_invocation: false

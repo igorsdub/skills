@@ -1,0 +1,5 @@
+interface:
+  display_name: "Orchestrator"
+  short_description: "Coordinate autonomous multi-agent task execution"
+policy:
+  allow_implicit_invocation: false

@@ -9,20 +9,24 @@ set -euo pipefail
 # each agent harness:
 #   - ~/.claude/skills: Claude Code
 #   - ~/.agents/skills: Codex and other Agent Skills-compatible harnesses
+#   - ~/.gemini/config/skills: Antigravity
 # Each entry is a symlink into this repo, so a `git pull` is all that's needed
 # to keep installed skills up to date.
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills")
+DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills" "$HOME/.gemini/config/skills")
 
-# Collect the repo's skills once, link into every destination.
+# Collect the repo's skills once, link into every destination. `archive/`
+# is retired and kept around but not promoted: it is skipped here.
+# `in-progress/` IS still linked: it's public on purpose, feedback wanted, and
+# this local install is exactly where that feedback loop runs.
 names=()
 srcs=()
 while IFS= read -r -d '' skill_md; do
   src="$(dirname "$skill_md")"
   names+=("$(basename "$src")")
   srcs+=("$src")
-done < <(find "$REPO/skills" -name SKILL.md -not -path '*/node_modules/*' -not -path '*/deprecated/*' -print0)
+done < <(find "$REPO/skills" -name SKILL.md -not -path '*/node_modules/*' -not -path '*/archive/*' -print0)
 
 for DEST in "${DESTS[@]}"; do
   # If $DEST is a symlink that resolves into this repo, we'd end up writing the
@@ -40,6 +44,23 @@ for DEST in "${DESTS[@]}"; do
   fi
 
   mkdir -p "$DEST"
+
+  for f in "$DEST"/*; do
+    [ -L "$f" ] || continue
+    if [ ! -e "$f" ]; then
+      target="$(readlink "$f")"
+      case "$target" in
+        /*) ;;
+        *) target="$(cd "$DEST" && pwd)/$target" ;;
+      esac
+      case "$target" in
+        "$REPO"/*|"$REPO")
+          rm "$f"
+          echo "cleaned stale symlink $(basename "$f")"
+          ;;
+      esac
+    fi
+  done
 
   for i in "${!names[@]}"; do
     name="${names[$i]}"

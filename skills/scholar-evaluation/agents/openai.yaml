@@ -1,0 +1,5 @@
+interface:
+  display_name: "Scholar Evaluation"
+  short_description: "Evidence-traceable developmental review of scholarly works and rubric audits"
+policy:
+  allow_implicit_invocation: false

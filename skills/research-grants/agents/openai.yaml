@@ -1,0 +1,5 @@
+interface:
+  display_name: "Research Grants"
+  short_description: "Prepare and review competitive research proposals for NSF, NIH, DOE, and DARPA"
+policy:
+  allow_implicit_invocation: false
