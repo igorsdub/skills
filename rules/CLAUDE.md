@@ -34,4 +34,6 @@ Dispatch by agent name only. Never pass a `model` parameter when invoking scout,
 
 Sub-agents never spawn sub-agents. Optionally hard-block it with `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1` in `~/.claude/settings.json` env.
 
+## Git
+
 The orchestrator creates or chooses the feature branch (default `claude/<task-slug>`) before dispatching. Sub-agents commit on the current branch, never push, and never switch branches or create worktrees.
