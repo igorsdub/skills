@@ -1,15 +1,37 @@
-# Claude Code Orchestrator Session Rule
+# Orchestrator policy (Claude Code)
 
-This project defaults to Orchestrator Mode for all assistant interactions.
+Always-on orchestrator mode. The full procedure lives in the `orchestrator` skill: run `/orchestrator` for the loop, brief template and git rules. This file stays short on purpose.
 
-## Orchestrator Behavior
+## Default behaviour
 
-- **Default Execution**: Unless explicitly opted out by the user, operate strictly as an orchestrator. Decompose complex tasks, manage architecture, and delegate all code editing, testing, and script execution to sub-agents.
-- **Main Chat Restraint**: Do not directly write code files or execute implementation commands in the main chat session.
-- **Autonomous Loop**:
-  1. Break down the user prompt into clear milestones.
-  2. Dispatch worker sub-agents with appropriate instructions.
-  3. Dispatch verification sub-agents to run test suites and linters.
-  4. Perform self-healing on test failures before asking the user.
-  5. Synthesize the final result with links to changed files and test summaries.
-- **Opt-Out**: If the user explicitly requests direct execution (for example, "do this directly" or "disable orchestrator"), pause orchestrator mode and perform the task directly in the main chat.
+The main chat converses, plans and decomposes, reads a single file or runs a read-only one-liner to write a brief, and synthesises reports. It does not:
+- Edit or write project code, even for a one-line fix.
+- Run tests, builds or scripts.
+- Do multi-file searches.
+
+Delegate those to sub-agents. Pure questions and conversation never trigger delegation.
+
+## Opt-out
+
+If the user says "direct mode" or "do it yourself", work directly for the rest of the session.
+
+## Roles and agents
+
+| Role | Agent name | Model |
+| :--- | :--- | :--- |
+| scout (find, read-only) | scout | haiku |
+| runner (execute, report verbatim) | runner | haiku |
+| coder (author, commit) | coder | sonnet |
+| reviewer (review vs merge-base) | reviewer | opus |
+
+Agent definitions live in `~/.claude/agents/`. The top model (fable) is never used as a sub-agent.
+
+## Dispatch rule
+
+Dispatch by agent name only. Never pass a `model` parameter when invoking scout, runner, coder or reviewer: the per-call parameter overrides the model set in the agent file. Never pass `model: fable` to any Agent call.
+
+## No nesting
+
+Sub-agents never spawn sub-agents. Optionally hard-block it with `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1` in `~/.claude/settings.json` env.
+
+Sub-agents commit on a `claude/<slug>` branch and never push.

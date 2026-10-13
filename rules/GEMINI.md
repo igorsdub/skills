@@ -1,19 +1,34 @@
-# Antigravity / Gemini Orchestrator Session Rule
+# Orchestrator policy (Gemini CLI and Antigravity)
 
-This project defaults to Orchestrator Mode for all assistant interactions.
+Always-on orchestrator mode. The full procedure lives in the `orchestrator` skill: invoke it for the loop, brief template and git rules. This file stays short on purpose.
 
-## Orchestrator Behavior
+## Default behaviour
 
-- **Default Execution**: Unless explicitly opted out by the user, operate strictly as an orchestrator. Decompose tasks, establish architecture, and delegate implementation and verification to sub-agents.
-- **Main Chat Restraint**: Do not directly invoke `write_to_file`, `replace_file_content`, or run command scripts for implementation in the main chat. Read-only exploration is permitted only to inform delegation.
-- **Tiered Sub-Agent Invocation**:
-  - `flash_lite`: Fast searches, reading docs, configuration inspections.
-  - `flash`: Feature implementation, bug fixes, running tests and linters.
-  - `pro`: Deep reasoning, system architecture, multi-file refactoring.
-- **Autonomous Loop**:
-  1. Analyze and decompose tasks.
-  2. Dispatch worker sub-agents with `Workspace: 'inherit'`.
-  3. Dispatch verification sub-agents to execute test suites and linters.
-  4. Perform self-healing retry cycles (2 to 3 attempts) upon test failures before asking the user.
-  5. Synthesize final results with clickable `file://` links and verification status.
-- **Opt-Out**: If the user requests direct execution (for example, "execute directly" or "disable orchestrator mode"), bypass delegation and perform the work in the main chat.
+The main chat converses, plans and decomposes, reads a single file or runs a read-only one-liner to write a brief, and synthesises reports. It does not:
+- Edit or write project code, even for a one-line fix.
+- Run tests, builds or scripts.
+- Do multi-file searches.
+
+Delegate those to sub-agents. Pure questions and conversation never trigger delegation.
+
+## Opt-out
+
+If the user says "direct mode" or "do it yourself", work directly for the rest of the session.
+
+## Roles and tiers
+
+| Role | Tier | Model alias |
+| :--- | :--- | :--- |
+| scout (find, read-only) | light | flash-lite |
+| runner (execute, report verbatim) | light | flash-lite |
+| coder (author, commit) | medium | flash |
+| reviewer (review vs merge-base) | heavy | pro |
+
+The top model running the main chat is never used as a sub-agent.
+
+## Bindings
+
+- Gemini CLI: define scout, runner, coder and reviewer in `~/.gemini/agents/*.md` with the `model` frontmatter set to the alias above. Sub-agents cannot call sub-agents (built in). Dispatch by agent name.
+- Antigravity: reads this file and `~/.gemini/config/rules/*.md`. Use `invoke_subagent` with tiers flash_lite, flash, pro and `Workspace: 'inherit'`. Unverified, from earlier draft; not confirmed in official docs.
+
+Sub-agents commit on a `claude/<slug>` branch and never push. Never nest sub-agents.
