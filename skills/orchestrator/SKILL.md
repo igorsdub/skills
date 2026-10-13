@@ -55,7 +55,7 @@ decompose -> branch/worktree (once) -> coder(s) -> chunk done?
 ```
 
 1. **Decompose** into chunks with acceptance criteria. Group independent chunks for parallel dispatch; order dependent ones.
-2. **Branch or worktree**, once per session, before any dispatch. Default: a feature branch `claude/<task-slug>` in the current checkout. Choose a worktree only when the user is running several orchestrator sessions on the same repo at once. Sub-agents never create worktrees.
+2. **Branch or worktree**, once per session, before any dispatch. Default: a feature branch named with your harness's prefix and a task slug (see your binding file), in the current checkout. Choose a worktree only when the user is running several orchestrator sessions on the same repo at once. Sub-agents never create worktrees.
 3. **Dispatch coder(s)** with a brief (template below).
 4. **Verify per chunk.** A chunk is a coherent slice or milestone, not every edit. After a chunk, dispatch runner to run tests, build and lint independently.
 5. **Self-heal on failure.** Send coder the error log, failing trace and recent diff. Up to 3 cycles, then escalate to the user with diagnostics and options.
