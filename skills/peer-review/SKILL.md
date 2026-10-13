@@ -1,5 +1,6 @@
 ---
 name: peer-review
+disable-model-invocation: true
 description: Prepares evidence-bounded, constructive peer-review drafts and structured manuscript assessments. Supports authorized review of scientific manuscripts, protocols, preprints, or research proposals; reporting-guideline selection; claim-evidence checks; methods, statistics, reproducibility, ethics, figure/table, and citation critique; or revision-response planning.
 license: MIT
 compatibility: Python 3.11+ standard library. Bundled CLIs are deterministic and local-only; they accept bounded JSON, CSV, or Markdown and make no network, model, image, or external-service calls.
